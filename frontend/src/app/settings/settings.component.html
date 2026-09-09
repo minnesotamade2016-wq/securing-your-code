@@ -1,0 +1,79 @@
+<div class="settings-shell">
+  <aside class="settings-sidebar">
+    <div class="brand">
+      <div class="brand-mark"><span class="material-icons">directions_car</span></div>
+      <div>
+        <strong>DAHLHEIMER</strong>
+        <small>ENTERPRISE MANAGER</small>
+      </div>
+    </div>
+
+    <nav aria-label="Main navigation">
+      <a *ngFor="let item of navigation" [class.active]="item === 'Settings'"
+         [routerLink]="item === 'Settings' ? '/settings' : null" href="#">
+        <span class="material-icons">{{ navigationIcons[item] }}</span>
+        <span>{{ item }}</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <span class="status-dot"></span>
+      <span>Local database protected</span>
+      <small>ONE NAME. EVERY SOLUTION.</small>
+    </div>
+  </aside>
+
+  <main class="settings-content">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">BUSINESS CONFIGURATION</p>
+        <h1>Settings</h1>
+      </div>
+      <div class="header-actions">
+        <button aria-label="Refresh"><span class="material-icons">refresh</span></button>
+        <button aria-label="Open in new window"><span class="material-icons">north_east</span></button>
+        <button class="autopilot"><span class="status-dot"></span> AI Autopilot <b>ON</b></button>
+        <button class="profile">DE</button>
+      </div>
+    </header>
+
+    <div class="settings-grid">
+      <section class="settings-card autopilot-card">
+        <h2>AI Autopilot &amp; schedule</h2>
+        <div class="card-body">
+          <div class="options">
+            <label><input type="checkbox" [(ngModel)]="aiEngineEnabled"> <span>AI engine enabled</span></label>
+            <label><input type="checkbox" [(ngModel)]="masterAutopilot"> <span>Master Autopilot</span></label>
+            <label><input type="checkbox" [(ngModel)]="automaticallyReply"> <span>Automatically reply</span></label>
+            <label><input type="checkbox" [(ngModel)]="automaticallyBook"> <span>Automatically book next open time</span></label>
+          </div>
+          <div class="field-grid">
+            <label>OLLAMA MODEL<input value="llama3.2:3b"></label>
+            <label>OPENING TIME<input value="09:00"></label>
+            <label>CLOSING TIME<input value="17:00"></label>
+            <label>WORKING DAYS (1=MON ... 7=SUN)<input value="1,2,3,4,5,6"></label>
+            <label>DEFAULT APPOINTMENT MINUTES<input type="number" value="90"></label>
+          </div>
+        </div>
+      </section>
+
+      <section class="settings-card public-card">
+        <h2>Public URL &amp; Meta Business</h2>
+        <div class="card-body">
+          <div class="notice">Meta webhooks need a public HTTPS address that forwards to this app. Your App Secret and Page token are encrypted to your Windows account.</div>
+          <label>PUBLIC HTTPS BASE URL<input value="http://127.0.0.1:8765"></label>
+          <label>CUSTOMER REQUEST / QR URL<input value="http://127.0.0.1:8765/request"></label>
+          <div class="field-grid">
+            <label>META GRAPH VERSION<input value="v24.0"></label>
+            <label>META APP ID<input class="invalid"></label>
+            <label>WEBHOOK VERIFY TOKEN<input></label>
+            <label>CONNECTED PAGE ID<input></label>
+            <label>CONNECTED PAGE NAME<input></label>
+            <label>META APP SECRET<input type="password"></label>
+            <label>PAGE ACCESS TOKEN<input type="password"></label>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
